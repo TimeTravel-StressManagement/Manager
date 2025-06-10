@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TimeTravel - Stress Tracker</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animation.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <!-- Background animations are now handled by the JS -->
+    
+    <div class="app-container">
+        <nav class="sidebar">
+            <a href="home.html" class="logo"><i class="bi bi-hourglass-split"></i> TimeTravel</a>
+            <ul class="nav-items">
+                <li><button class="nav-btn button" data-page="index.html"><i class="bi bi-grid-1x2-fill"></i> <span class="nav-text">Dashboard</span></button></li>
+                <li><button class="nav-btn button" data-page="planner.html"><i class="bi bi-robot"></i> <span class="nav-text">AI Planner</span></button></li>
+                <li><button class="nav-btn button" data-page="tasks.html"><i class="bi bi-check2-square"></i> <span class="nav-text">Tasks</span></button></li>
+                <li><button class="nav-btn button" data-page="schedule.html"><i class="bi bi-calendar-week"></i> <span class="nav-text">Schedule</span></button></li>
+                <li class="active"><button class="nav-btn button" data-page="stress.html"><i class="bi bi-activity"></i> <span class="nav-text">Stress Tracker</span></button></li>
+                <li><button class="nav-btn button" data-page="analytics.html"><i class="bi bi-bar-chart-fill"></i> <span class="nav-text">Analytics</span></button></li>
+                <li><button class="nav-btn button" data-page="accessibility.html"><i class="bi bi-universal-access"></i> <span class="nav-text">Accessibility</span></button></li>
+            </ul>
+            <div class="stress-meter">
+                <h3><i class="bi bi-emoji-smile"></i> <span class="nav-text i18n" data-i18n="stress_level">Stress Level</span></h3>
+                <div class="stress-controls">
+                    <div class="stress-slider-row">
+                        <input type="range" min="1" max="10" value="5" class="stress-slider" id="stressLevel">
+                        <div class="stress-value">5/10</div>
+                    </div>
+                    <button class="button confirm-stress-btn" id="confirmStress">Confirm</button>
+                </div>
+            </div>
+        </nav>
+
+        <main class="main-content">
+            <header>
+                <h1>Stress Tracker</h1>
+                <div class="user-profile">
+                    <span class="user-name">Welcome back!</span>
+                    <div class="profile-icon"><i class="bi bi-person-fill"></i></div>
+                </div>
+            </header>
+            
+            <!-- Time & Date Display -->
+            <div class="time-display">
+                <div class="current-time" id="currentTime">00:00:00</div>
+                <div class="current-date" id="currentDate">Monday, January 1, 2025</div>
+            </div>
+            
+            <div class="stress-grid">
+                <div class="card glow-card">
+                    <h2><i class="bi bi-graph-up"></i> Stress History</h2>
+                    <div class="chart-container">
+                        <canvas id="stressHistoryChart"></canvas>
+                    </div>
+                    <div class="card-footer">
+                        <div class="card-stat"><i class="bi bi-heart"></i> Self-care is never selfish</div>
+                        <div class="card-stat"><i class="bi bi-brightness-high"></i> Every day is a fresh start</div>
+                    </div>
+                </div>
+                <div class="card glow-card">
+                    <h2><i class="bi bi-lightbulb"></i> Stress Insights</h2>
+                    <div id="stressInsights" class="stress-insights"></div>
+                    <div class="card-footer">
+                        <div class="card-stat"><i class="bi bi-peace"></i> Breathe in calm, breathe out stress</div>
+                        <div class="card-stat"><i class="bi bi-water"></i> Flow with life, not against it</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="js/sounds.js"></script>
+    <script src="js/app.js"></script>
+    <script src="js/accessibility.js"></script>
+    <script>
+        // Update time and date
+        function updateTimeAndDate() {
+            const now = new Date();
+            document.getElementById('currentTime').textContent = now.toLocaleTimeString();
+            document.getElementById('currentDate').textContent = now.toLocaleDateString('en-US', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+        }
+        
+        // Update time every second
+        setInterval(updateTimeAndDate, 1000);
+        updateTimeAndDate(); // Initial call
+    </script>
+    <script src="js/background-animation.js"></script>
+</body>
+</html>

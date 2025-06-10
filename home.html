@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TimeTravel - Home</title>
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/animation.css">
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        /* Home page specific styles */
+        .home-container {
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+            background-color: var(--background-color);
+        }
+
+        .home-content {
+            z-index: 10;
+            text-align: center;
+            max-width: 800px;
+            padding: 3rem;
+            background: rgba(30, 30, 46, 0.4);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            border-radius: var(--border-radius);
+            border: var(--glass-border);
+            box-shadow: var(--glass-shadow);
+        }
+
+        .home-logo {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1.5rem;
+            color: var(--text-primary);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .home-logo i {
+            color: var(--primary-color);
+            font-size: 4.5rem;
+        }
+
+        .home-description {
+            font-size: 1.2rem;
+            line-height: 1.7;
+            margin-bottom: 2.5rem;
+            color: var(--text-secondary);
+        }
+
+        .features-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: center;
+            margin-bottom: 2.5rem;
+        }
+
+        .feature-item {
+            background: rgba(110, 86, 207, 0.1);
+            padding: 1rem 1.5rem;
+            border-radius: 12px;
+            border: 1px solid rgba(110, 86, 207, 0.3);
+            display: flex;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        .feature-item i {
+            color: var(--primary-color);
+            font-size: 1.5rem;
+        }
+
+        .get-started-btn {
+            font-size: 1.25rem;
+            padding: 1rem 3rem;
+            background: var(--primary-color);
+            border: none;
+            border-radius: 50px;
+            color: white;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 0 20px var(--primary-glow);
+        }
+
+        .get-started-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 25px var(--primary-glow);
+        }
+
+        .get-started-btn:active {
+            transform: translateY(1px);
+        }
+
+        /* Ripple effect */
+        .ripple-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            z-index: 1;
+        }
+
+        .ripple {
+            position: absolute;
+            border-radius: 50%;
+            background: radial-gradient(circle, rgba(110, 86, 207, 0.15) 0%, rgba(110, 86, 207, 0) 70%);
+            transform: scale(0);
+            animation: ripple-animation 15s linear infinite;
+        }
+
+        @keyframes ripple-animation {
+            0% {
+                transform: scale(0);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(6);
+                opacity: 0;
+            }
+        }
+
+        /* Navigation link in corner */
+        .corner-nav {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            z-index: 20;
+            transition: all 0.3s ease;
+        }
+
+        .corner-nav:hover {
+            color: var(--primary-color);
+            transform: scale(1.05);
+        }
+
+        .corner-nav i {
+            color: var(--primary-color);
+        }
+    </style>
+</head>
+<body>
+    <div class="home-container">
+        <!-- Corner navigation link to dashboard -->
+        <a href="index.html" class="corner-nav">
+            <i class="bi bi-hourglass-split"></i> TimeTravel
+        </a>
+
+        <!-- Ripple background effect -->
+        <div class="ripple-container" id="rippleContainer"></div>
+
+        <!-- Main content -->
+        <div class="home-content">
+            <div class="home-logo">
+                <i class="bi bi-hourglass-split"></i>
+                <span>TimeTravel</span>
+            </div>
+
+            <p class="home-description">
+                TimeTravel is an AI-powered productivity suite designed to help you manage your time effectively and reduce stress. Our intelligent system adapts to your work habits, prioritizes tasks based on deadlines and importance, and provides personalized recommendations to optimize your workflow.
+            </p>
+
+            <div class="features-list">
+                <div class="feature-item">
+                    <i class="bi bi-robot"></i>
+                    <span>AI Planner</span>
+                </div>
+                <div class="feature-item">
+                    <i class="bi bi-check2-square"></i>
+                    <span>Task Management</span>
+                </div>
+                <div class="feature-item">
+                    <i class="bi bi-calendar-week"></i>
+                    <span>Schedule</span>
+                </div>
+                <div class="feature-item">
+                    <i class="bi bi-activity"></i>
+                    <span>Stress Tracker</span>
+                </div>
+                <div class="feature-item">
+                    <i class="bi bi-bar-chart-fill"></i>
+                    <span>Analytics</span>
+                </div>
+            </div>
+
+            <a href="index.html">
+                <button class="get-started-btn">Get Started</button>
+            </a>
+        </div>
+    </div>
+
+    <script>
+        // Create ripple effect
+        document.addEventListener('DOMContentLoaded', function() {
+            const rippleContainer = document.getElementById('rippleContainer');
+            const colors = [
+                'rgba(110, 86, 207, 0.15)',  // Primary color
+                'rgba(167, 139, 250, 0.1)',  // Primary glow
+                'rgba(255, 125, 84, 0.1)',   // Secondary color
+                'rgba(0, 212, 255, 0.1)'     // Tertiary color
+            ];
+
+            // Create multiple ripple elements
+            for (let i = 0; i < 8; i++) {
+                createRipple(rippleContainer, colors[i % colors.length], i);
+            }
+
+            function createRipple(container, color, index) {
+                const ripple = document.createElement('div');
+                ripple.classList.add('ripple');
+                
+                // Random position
+                const size = Math.max(window.innerWidth, window.innerHeight) * 0.5;
+                const x = Math.random() * window.innerWidth;
+                const y = Math.random() * window.innerHeight;
+                
+                ripple.style.width = `${size}px`;
+                ripple.style.height = `${size}px`;
+                ripple.style.left = `${x}px`;
+                ripple.style.top = `${y}px`;
+                ripple.style.background = `radial-gradient(circle, ${color} 0%, rgba(110, 86, 207, 0) 70%)`;
+                
+                // Animation delay based on index
+                ripple.style.animationDelay = `${index * 2}s`;
+                
+                container.appendChild(ripple);
+            }
+        });
+    </script>
+    <script src="js/background-animation.js"></script>
+</body>
+</html>
